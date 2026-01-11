@@ -15,7 +15,7 @@ const About = () => {
       <div className="section-container relative z-10">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-muted-foreground text-sm uppercase tracking-wider">— Who I Are</span>
+            <span className="text-muted-foreground text-sm uppercase tracking-wider">— Who I am</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold">
             <span className="text-foreground">About </span>
