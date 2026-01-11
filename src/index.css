@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 230 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 25% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 25% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 330 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 25% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 25% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 45 95% 60%;
+    --accent-foreground: 230 25% 8%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 25% 18%;
+    --input: 230 25% 18%;
+    --ring: 330 85% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradient tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(330, 85%, 60%) 0%, hsl(280, 80%, 55%) 50%, hsl(200, 90%, 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45, 95%, 60%) 0%, hsl(30, 95%, 55%) 100%);
+    --gradient-hero: radial-gradient(ellipse at 30% 20%, hsl(280, 60%, 20%) 0%, hsl(230, 25%, 8%) 50%);
+    --gradient-glow: radial-gradient(circle, hsl(330, 85%, 60%) 0%, transparent 70%);
+    
+    /* Shadows */
+    --shadow-card: 0 4px 30px -4px hsl(0 0% 0% / 0.5);
+    --shadow-card-hover: 0 16px 50px -8px hsl(330 85% 60% / 0.3);
+    --shadow-button: 0 4px 20px -3px hsl(330 85% 60% / 0.5);
+    --shadow-glow: 0 0 60px hsl(330 85% 60% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-20 md:py-28;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold text-foreground mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted-foreground max-w-2xl;
+  }
+
+  .card-modern {
+    @apply bg-card rounded-2xl p-6 border border-border transition-all duration-500;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-modern:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--primary) / 0.3);
+    transform: translateY(-4px);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-text-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 rounded-full font-semibold text-white transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-button);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px -3px hsl(330 85% 60% / 0.6);
+  }
+
+  .btn-outline {
+    @apply border-2 border-muted-foreground/30 text-foreground px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:border-primary hover:text-primary flex items-center gap-2;
+  }
+
+  .nav-link {
+    @apply text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Fade up animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 0 0 30px hsl(330 85% 60% / 0.3),
+                0 0 60px hsl(330 85% 60% / 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 50px hsl(330 85% 60% / 0.5),
+                0 0 100px hsl(330 85% 60% / 0.2);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Background grid pattern */
+.bg-grid {
+  background-image: 
+    linear-gradient(to right, hsl(230 25% 15% / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(230 25% 15% / 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Decorative line */
+.line-accent {
+  @apply w-12 h-1 rounded-full;
+  background: var(--gradient-primary);
+}
+
+/* Speech bubble */
+.speech-bubble {
+  @apply relative px-6 py-3 bg-card border border-border rounded-full;
+}
+
+.speech-bubble::after {
+  content: '';
+  @apply absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-card border-r border-b border-border;
+  transform: translateX(-50%) rotate(45deg);
+}
