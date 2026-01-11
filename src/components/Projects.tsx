@@ -7,7 +7,7 @@ const Projects = () => {
       description: 'A collection of hands-on Python projects covering fundamental concepts like loops, functions, file handling, and OOP.',
       tags: ['Python', 'OOP', 'Fundamentals'],
       status: 'In Progress',
-      image: '/placeholder.svg',
+      image: 'https://ik.imagekit.io/casyqt2cx/python-programming-2CFJA44.jpg',
     },
     {
       title: 'Machine Learning Basics',
